@@ -4,15 +4,8 @@ FROM jaii1515/openjdk-24-jdk-slim
 # Set the working directory in the container
 WORKDIR /app
 
-# Define build-time argument
-ARG imageName
-
-# Set environment variable from ARG
-ENV IMAGE_NAME=${imageName}
-
 # Copy the JAR file from the build context to the /app directory in the image
-COPY target/${IMAGE_NAME}.jar ${IMAGE_NAME}.jar
+COPY target/api-gateway.jar api-gateway.jar
 
 # Set the entry point to run the JAR file
-ENTRYPOINT ["java", "-jar", "${IMAGE_NAME}.jar"]
-
+ENTRYPOINT ["java", "-jar", "api-gateway.jar"]
