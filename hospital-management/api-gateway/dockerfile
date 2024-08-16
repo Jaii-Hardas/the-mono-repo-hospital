@@ -1,11 +1,11 @@
 # Use a base image with OpenJDK 24
 FROM jaii1515/openjdk-24-jdk-slim
 
-# Set the working directory in the container
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the JAR file from the build context to the /app directory in the image
-COPY target/api-gateway.jar api-gateway.jar
+# Copy the application JAR file
+COPY . /app
 
-# Set the entry point to run the JAR file
-ENTRYPOINT ["java", "-jar", "api-gateway.jar"]
+# Start the application
+CMD ["java", "-jar", "/app/api-gateway.jar"]
