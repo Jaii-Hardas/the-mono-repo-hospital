@@ -1,5 +1,7 @@
-# Base WORKDIR => /
+# Use a base image with OpenJDK 24
 FROM jaii1515/openjdk-24-jdk-slim
+
+# Set the working directory in the container
 WORKDIR /app
 
 # Define build-time argument
@@ -8,8 +10,9 @@ ARG imageName
 # Set environment variable from ARG
 ENV IMAGE_NAME=${imageName}
 
-# Copy Jar from build context to /app directory in the image
+# Copy the JAR file from the build context to the /app directory in the image
 COPY target/${IMAGE_NAME}.jar ${IMAGE_NAME}.jar
 
-# Set the entry point
-ENTRYPOINT ["sh", "-c", "java -jar /app/${IMAGE_NAME}.jar"]
+# Set the entry point to run the JAR file
+ENTRYPOINT ["java", "-jar", "${IMAGE_NAME}.jar"]
+
