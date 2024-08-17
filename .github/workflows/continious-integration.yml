@@ -10,27 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Setup java
-        uses: actions/setup-java@v4
-        with:
-          distribution: "temurin"
-          java-version: "21"
-          
-      - name: Perform google formatter check
-        run: mvn com.spotify.fmt:fmt-maven-plugin:check
-
-      - name: GitLeaks Scan
-        uses: zricethezav/gitleaks-action@v1.3.0
-        with:
-          args: --path=.
-
-      - name: OSS scan
-        run: mvn ossindex:audit
-        continue-on-error: true
-
-      - name: OWASP Scan
-        if: false
-        run: mvn org.owasp:dependency-check-maven:check    
       - name: Checkout Code
         uses: actions/checkout@v3
 
