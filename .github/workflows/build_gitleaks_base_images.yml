@@ -1,3 +1,10 @@
+name: base images build
+
+on:
+  push:
+    paths: dev-sec-ops/base-images/**
+      
+jobs:
  build_gitleaks_base_images:
     runs-on: ubuntu-latest
 
