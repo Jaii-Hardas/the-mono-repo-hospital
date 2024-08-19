@@ -1,4 +1,4 @@
-name: base images build
+name: build gitleaks base images
 
 on:
   push:
